@@ -60,6 +60,6 @@ RUN apt-get install -y dbus-x11
 ENV DISPLAY=172.30.224.1:0
 ENV LIBGL_ALWAYS_INDIRECT=1
 
-CMD ["service dbus start && startdde"]
+CMD service dbus start && startdde
 
 ENV DEBIAN_FRONTEND newt
