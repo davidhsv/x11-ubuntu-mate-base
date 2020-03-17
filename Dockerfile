@@ -45,8 +45,6 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
     oneko \
     sudo \
     synaptic
-    
-RUN apt-get build-dep startdde
 
 RUN cat /usr/share/xsessions/deepin.desktop
 
