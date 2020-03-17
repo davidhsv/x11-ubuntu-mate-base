@@ -64,6 +64,6 @@ RUN chmod +x /usr/local/bin/start
 ENV DISPLAY=172.30.224.1:0
 
 ENTRYPOINT ["/usr/local/bin/start"]
-CMD ["startdde"]
+CMD ["startx"]
 
 ENV DEBIAN_FRONTEND newt
