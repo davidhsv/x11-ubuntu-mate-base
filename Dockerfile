@@ -60,6 +60,7 @@ RUN service dbus start
 
 
 ENV DISPLAY=172.30.224.1:0
+ENV LIBGL_ALWAYS_INDIRECT=1
 
 CMD ["startdde"]
 
