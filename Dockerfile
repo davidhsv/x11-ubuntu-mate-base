@@ -56,6 +56,8 @@ RUN apt-get install rsyslog && service rsyslog start
 
 RUN apt-get install dbus-x11
 
+RUN service dbus start
+
 
 ENV DISPLAY=172.30.224.1:0
 
