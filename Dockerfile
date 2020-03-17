@@ -6,8 +6,12 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # choose a mirror
 #RUN echo "deb http://packages.deepin.com/deepin/ panda main non-free contrib" > /etc/apt/sources.list
-RUN echo "deb http://mirrors.kernel.org/deepin/  panda main non-free contrib" > /etc/apt/sources.list
+#RUN echo "deb http://mirrors.kernel.org/deepin/  panda main non-free contrib" > /etc/apt/sources.list
 #RUN echo "deb http://ftp.fau.de/deepin/          panda main non-free contrib" > /etc/apt/sources.list
+
+RUN add-apt-repository ppa:leaeasy/dde -y && apt-get update && apt-mark hold iptables && \
+    apt-get install -y sudo && apt-get install -y dde && apt-get install dde-file-manager deepin-calculator deepin-gtk-theme deepin-movie deepin-image-viewer deepin-screen-recorder deepin-screenshot deepin-terminal deepin-voice-recorder deepin-gtk-theme -y && \
+	apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # basics
 RUN rm -rf /var/lib/apt/lists/* && \
