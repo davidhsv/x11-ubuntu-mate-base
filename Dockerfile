@@ -51,6 +51,10 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
     oneko \
     sudo \
     synaptic
+    
+RUN apt-get install rsyslog && service rsyslog start
+
+RUN apt-get install dbus-x11
 
 
 ENV DISPLAY=172.30.224.1:0
