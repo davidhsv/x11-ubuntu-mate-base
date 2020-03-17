@@ -50,10 +50,10 @@ RUN apt-get build-dep startdde
 
 RUN cat /usr/share/xsessions/deepin.desktop
 
-RUN echo '[Desktop Entry]
-Name=Deepin
-Comment=Deepin Desktop Environment
-Exec=/usr/bin/startdde
+RUN echo '[Desktop Entry]\n\
+Name=Deepin\n\
+Comment=Deepin Desktop Environment\n\
+Exec=/usr/bin/startdde\n\
 ' > /usr/share/xsessions/deepin.desktop 
 # startscript to copy dotfiles from /etc/skel
 # runs either CMD or image command from docker run
