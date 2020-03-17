@@ -52,9 +52,9 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     synaptic
     
-RUN apt-get install rsyslog && service rsyslog start
+RUN apt-get install -y rsyslog && service rsyslog start
 
-RUN apt-get install dbus-x11
+RUN apt-get install -y dbus-x11
 
 RUN service dbus start
 
