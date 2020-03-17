@@ -45,7 +45,16 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
     oneko \
     sudo \
     synaptic
+    
+RUN apt-get build-dep startdde
 
+RUN cat /usr/share/xsessions/deepin.desktop
+
+RUN echo '[Desktop Entry]
+Name=Deepin
+Comment=Deepin Desktop Environment
+Exec=/usr/bin/startdde
+' > /usr/share/xsessions/deepin.desktop 
 # startscript to copy dotfiles from /etc/skel
 # runs either CMD or image command from docker run
 RUN echo '#! /bin/sh\n\
