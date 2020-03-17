@@ -55,14 +55,11 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
 RUN apt-get install -y rsyslog && service rsyslog start
 
 RUN apt-get install -y dbus-x11
- 
-USER 0 
-RUN service dbus start
-RUN service dbus start
+
 
 ENV DISPLAY=172.30.224.1:0
 ENV LIBGL_ALWAYS_INDIRECT=1
 
-CMD ["startdde"]
+CMD ["service dbus start && startdde"]
 
 ENV DEBIAN_FRONTEND newt
