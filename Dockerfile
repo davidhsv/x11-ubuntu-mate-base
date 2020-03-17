@@ -4,10 +4,12 @@ MAINTAINER Tan Quach <tan.quach@birchwoodlangham.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN add-apt-repository ppa:leaeasy/dde -y && apt-get update && apt-mark hold iptables && \
-    apt-get install -y sudo && apt-get install -y dde && apt-get install dde-file-manager deepin-calculator deepin-gtk-theme deepin-movie deepin-image-viewer deepin-screen-recorder deepin-screenshot deepin-terminal deepin-voice-recorder deepin-gtk-theme -y && \
-	apt-get clean && rm -rf /var/lib/apt/lists/*
+# choose a mirror
+#RUN echo "deb http://packages.deepin.com/deepin/ panda main non-free contrib" > /etc/apt/sources.list
+RUN echo "deb http://mirrors.kernel.org/deepin/  panda main non-free contrib" > /etc/apt/sources.list
+#RUN echo "deb http://ftp.fau.de/deepin/          panda main non-free contrib" > /etc/apt/sources.list
 
+# basics
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     apt-get update && \
@@ -46,24 +48,9 @@ RUN env DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     synaptic
 
-RUN cat /usr/share/xsessions/deepin.desktop
-
-RUN echo '[Desktop Entry]\n\
-Name=Deepin\n\
-Comment=Deepin Desktop Environment\n\
-Exec=/usr/bin/startdde\n\
-' > /usr/share/xsessions/deepin.desktop 
-# startscript to copy dotfiles from /etc/skel
-# runs either CMD or image command from docker run
-RUN echo '#! /bin/sh\n\
-[ -e "$HOME/.config" ] || cp -R /etc/skel/. $HOME/ \n\
-exec $* \n\
-' > /usr/local/bin/start 
-RUN chmod +x /usr/local/bin/start 
 
 ENV DISPLAY=172.30.224.1:0
 
-ENTRYPOINT ["/usr/local/bin/start"]
-CMD ["startx"]
+CMD ["startdde"]
 
 ENV DEBIAN_FRONTEND newt
